@@ -1,69 +1,96 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Appointment {
 
-    private String appointmentId;
-    private String doctorName;
-    private String patientName;
-    private String date;
-    private String time;
-    private String purpose;
+    private String appointmentID;
+    private LocalDate date;
+    private LocalTime time;
+    private String courseName;
     private String status;
 
 
-public Appointment(String appointmentId, String patientName, String doctorName,
-                       String date, String time, String purpose, String status) {
-        this.appointmentId = appointmentId;
-        this.patientName = patientName;
-        this.doctorName = doctorName;
+public Appointment(String appointmentID, LocalDate date, LocalTime time, 
+                       String courseName, String status){
+        this.appointmentID = appointmentID;
         this.date = date;
         this.time = time;
-        this.purpose = purpose;
+        this.courseName = courseName;                
         this.status = status;
     }
 
-public String getAppointmentId() {
-        return appointmentId;
+// Getter methods
+    public String getAppointmentID() {
+        return appointmentID;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public String getDoctorName() {
-        return doctorName;
-    }
-
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public String getPurpose() {
-        return purpose;
+    public String getCourseName() {
+        return courseName;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setDate(String date) {
+    // Setter methods
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        // validate status using one of the allowed values
+        if (status.equals("Scheduled") || status.equals("Completed") || status.equals("Cancelled")) {
+            this.status = status;
+        } else {
+            System.out.println("Invalid status. Use Scheduled, Completed, or Cancelled.");
+        }
     }
 
+    public void schedule() {
+        this.status = "Scheduled";
+        System.out.println("Appointment " + appointmentID + " has been scheduled.");
+    }
+
+    public void cancel() {
+        this.status = "Cancelled";
+        System.out.println("Appointment " + appointmentID + " has been cancelled.");
+    }
+
+    public void reschedule(LocalDate newDate, LocalTime newTime) {
+        this.date = newDate;
+        this.time = newTime;
+        System.out.println("Appointment " + appointmentID + " rescheduled to " + newDate + " at " + newTime);
+    }
+
+    public boolean isAvailable() {
+        return status == null || status.equals("Cancelled");
+    }
+
+     @Override
+    public String toString() {
+        return "Appointment: " +
+                "\nappointmentID =" + appointmentID +
+                "\ndate =" + date +
+                "\ntime =" + time +
+                "\ncourseName = " + courseName +
+                "\nstatus= " + status ;
+    }
     
 
 }
