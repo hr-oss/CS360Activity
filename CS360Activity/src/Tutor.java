@@ -35,15 +35,15 @@ public void setAvailability(){
 }
 
 public void acceptMeeting(){
-
+    
 }
 
 public void declineMeeting(){
 
 }
 
-public void cancelMeeting(){
-
+public void cancelMeeting(Date meeting){
+    meetings.remove(meeting);
 }
 
 }
