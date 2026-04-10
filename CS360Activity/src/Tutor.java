@@ -37,12 +37,15 @@ class Tutor extends User{
         this.tutoringSubjects = new ArrayList<Course>(newSubjects);
     }
 
-    // public void setAvailability(){
-
-    // }
+    public boolean availability(Appointment appointment){
+        if (!(this.meetings.contains(appointment)) && this.tutoringSubjects.contains(course) && meeting.isAvailable()){
+            return true;
+        }
+        return false;
+    }
 
     public void acceptMeeting(Course course, Appointment appointment){
-        if (!(this.meetings.contains(appointment)) && this.tutoringSubjects.contains(course) && appointment.isAvailable()){
+        if (availability(appointment)){
             this.meetings.add(appointment);
         }
     }
