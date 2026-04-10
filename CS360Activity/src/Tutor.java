@@ -6,6 +6,14 @@ class Tutor extends User{
     List<Course> tutoringSubjects;
     List<Appointment> meetings;
 
+    public Tutor(String username, String password, String name){
+        super(username, password);
+        this.name = name;
+        this.rating = rating;
+        this.tutoringSubjects = new ArrayList<Course>();
+        this.meetings = new ArrayList<Appointment>();
+    }
+
     public Tutor(String username, String password, String name, float rating, List<Course> tutoringSubjects, List<Appointment> meetings){
         super(username, password);
         this.name = name;
