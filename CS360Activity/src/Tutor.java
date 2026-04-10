@@ -38,7 +38,7 @@ class Tutor extends User{
     }
 
     public boolean availability(Appointment appointment){
-        if (!(this.meetings.contains(appointment)) && this.tutoringSubjects.contains(course) && meeting.isAvailable()){
+        if (!(this.meetings.contains(appointment)) && this.tutoringSubjects.contains(course) && appointment.isAvailable()){
             return true;
         }
         return false;
