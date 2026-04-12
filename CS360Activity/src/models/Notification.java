@@ -1,3 +1,5 @@
+package models;
+
 import java.time.LocalDateTime;
 
 public class Notification {
@@ -6,7 +8,7 @@ public class Notification {
 	public LocalDateTime sent;
 	public String recipientUsername; // Note: Corrected spelling from UML's 'recepientUsername'
 
-	// Constructor to initialize the Notification object
+	// Constructor to initialize the models.Notification object
 	public Notification(String notificationID, String message, LocalDateTime sent, String recipientUsername) {
 		this.notificationID = notificationID;
 		this.message = message;
