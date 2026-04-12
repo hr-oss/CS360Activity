@@ -1,3 +1,5 @@
+package models;
+
 public class User {
     private static int userCount = 0;
     private String username;

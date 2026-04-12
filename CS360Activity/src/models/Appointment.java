@@ -1,3 +1,5 @@
+package models;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -63,18 +65,18 @@ public class Appointment {
 
     public void schedule() {
         this.status = "Scheduled";
-        System.out.println("Appointment " + appointmentID + " has been scheduled.");
+        System.out.println("models.Appointment " + appointmentID + " has been scheduled.");
     }
 
     public void cancel() {
         this.status = "Cancelled";
-        System.out.println("Appointment " + appointmentID + " has been cancelled.");
+        System.out.println("models.Appointment " + appointmentID + " has been cancelled.");
     }
 
     public void reschedule(LocalDate newDate, LocalTime newTime) {
         this.date = newDate;
         this.time = newTime;
-        System.out.println("Appointment " + appointmentID + " rescheduled to " + newDate + " at " + newTime);
+        System.out.println("models.Appointment " + appointmentID + " rescheduled to " + newDate + " at " + newTime);
     }
 
     public boolean isAvailable() {
@@ -83,7 +85,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment: " +
+        return "models.Appointment: " +
                 "\nappointmentID =" + appointmentID +
                 "\ndate =" + date +
                 "\ntime =" + time +
