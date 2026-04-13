@@ -60,14 +60,13 @@ public class Administrator {
     }
 
 
-    public void assignTutor(Tutor tutor, Course course) {
+    public void assignTutor(Tutor tutor, Course course) throws Exception {
         List<Course> tutoringSubjects;
         Boolean repeatCourse = false;
 
         if (tutor == null || course == null) {
             logAction("Failed to assign a tutor to a course!");
             throw new NullPointerException("Error: Tried to use a null pointer when assigning a tutor to a course!");
-            return;
         }
 
         tutoringSubjects = tutor.getTutoringSubjects();
@@ -81,13 +80,12 @@ public class Administrator {
         if (repeatCourse == true) {
             logAction("Failed to assign a tutor to a course!");
             throw new Exception("Error: Tried to assign the tutor to a duplicate course!");
-            return;
         }
 
-        tutoringSubject.add(course);
+        tutoringSubjects.add(course);
         tutor.setTutoringSubjects(tutoringSubjects);
 
-        logAction(String.format("Assigned tutor %s to course ID: %s.", tutor.getName(), course.getCourseID()));
+        logAction(String.format("Assigned tutor %s to course ID: %s.", tutor.getName(), course.courseID));
     }
 
 
@@ -102,11 +100,10 @@ public class Administrator {
         if (student == null) {
             logAction("Failed to deactivate a student account!");
             throw new NullPointerException("Error: Tried to use a null pointer deactivating a student account!");
-            return;
         }
 
         int studentID = student.getStudentID();
-        student.remove(student);
+        studentList.remove(student);
 
         logAction(String.format("Removed student with student ID: %d.", studentID));
     }
