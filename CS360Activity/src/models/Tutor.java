@@ -50,11 +50,15 @@ public class Tutor extends User {
 		this.tutoringSubjects = new ArrayList<Course>(newSubjects);
 	}
 
+	public List<Appointment> getMeetings() {
+		return this.meetings;
+	}
+
 	public boolean availability(Appointment appointment) {
 		LocalTime time = appointment.getTime();
 		int hour = time.getHour();
 
-		if (hour < 9 || hour > 20) { // Between 9a-5p
+		if (hour < 9 || hour > 17) { // Between 9a-5p
 			System.out.println("Outside of working hours!");
 			return false;
 		}
